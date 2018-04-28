@@ -6,7 +6,25 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
+    env: {
+      NODE_ENV:'"devlopment"'
+    },
+    // 代理路径
+    context: [
+      '/shopping',
+      '/ugc',
+      '/v1',
+      '/v2',
+      '/v3',
+      '/v4',
+      '/bos',
+      '/member',
+      'promotion',
+      '/eus',
+      '/payapi',
+      '/img'
+    ],
+    proxypath: 'http://cangdu.org:8001',
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
