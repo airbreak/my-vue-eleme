@@ -1,22 +1,23 @@
-/**
- * Created by jiangjianming@bmkp.cn on 2018/4/27.
- */
 import {
   baseUrl
-} from "./env"
-export default async (url = '', data = {}, type = 'GET', method = 'fetch') =>{
+} from './env'
+
+export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
   type = type.toUpperCase()
   url = baseUrl + url
+
   if (type === 'GET') {
-    let dataStr = ''
+    let dataStr = '' // 数据拼接字符串
     Object.keys(data).forEach(key => {
       dataStr += key + '=' + data[key] + '&'
     })
+
     if (dataStr !== '') {
       dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'))
       url = url + '?' + dataStr
     }
   }
+
   if (window.fetch && method === 'fetch') {
     let requestConfig = {
       credentials: 'include',
@@ -30,42 +31,45 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') =>{
     }
 
     if (type === 'POST') {
-      Object.defineProperties(requestConfig, 'body', {
+      Object.defineProperty(requestConfig, 'body', {
         value: JSON.stringify(data)
       })
     }
+
     try {
-      const response = await fetch(url,requestConfig);
+      const response = await fetch(url, requestConfig)
       const responseJson = await response.json()
       return responseJson
-    }catch {
-      throw  new Error(error)
+    } catch (error) {
+      throw new Error(error)
     }
-  }else {
+  } else {
     return new Promise((resolve, reject) => {
       let requestObj
       if (window.XMLHttpRequest) {
         requestObj = new XMLHttpRequest()
-      }else {
-        requestObj =  new ActiveXObject
+      } else {
+        requestObj = new ActiveXObject
       }
+
       let sendData = ''
-      if(type === 'POST') {
+      if (type === 'POST') {
         sendData = JSON.stringify(data)
       }
+
       requestObj.open(type, url, true)
       requestObj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
       requestObj.send(sendData)
 
       requestObj.onreadystatechange = () => {
-        if (requestObj.readyState ===4) {
-          if(requestObj.status === 200) {
+        if (requestObj.readyState === 4) {
+          if (requestObj.status === 200) {
             let obj = requestObj.response
-            if (typeof obj !=='object') {
+            if (typeof obj !== 'object') {
               obj = JSON.parse(obj)
             }
             resolve(obj)
-          }else {
+          } else {
             reject(requestObj)
           }
         }

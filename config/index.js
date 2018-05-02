@@ -3,39 +3,23 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const proxyConfig = require('./proxyConfig')
 
 module.exports = {
   dev: {
     env: {
-      NODE_ENV:'"devlopment"'
+      NODE_ENV:'"development"'
     },
-    // 代理路径
-    context: [
-      '/shopping',
-      '/ugc',
-      '/v1',
-      '/v2',
-      '/v3',
-      '/v4',
-      '/bos',
-      '/member',
-      'promotion',
-      '/eus',
-      '/payapi',
-      '/img'
-    ],
-    proxypath: 'http://cangdu.org:8001',
-    // Paths
+    host:'localhost',
+    port: 8000,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+
+    proxyTable: proxyConfig.proxyList,// 代理路径设置
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    // host: 'localhost', // can be overwritten by process.env.HOST
     autoOpenBrowser: true,
-    errorOverlay: true,
-    notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
     // Use Eslint Loader?
@@ -58,7 +42,7 @@ module.exports = {
     // https://vue-loader.vuejs.org/en/options.html#cachebusting
     cacheBusting: true,
 
-    cssSourceMap: true
+    cssSourceMap: false
   },
 
   build: {

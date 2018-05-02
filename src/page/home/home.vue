@@ -24,11 +24,26 @@
           </router-link>
         </ul>
       </section>
+      <section class="group_city_container">
+        <ul class="letter_classify">
+          <li v-for="(value, key, index) in sortgroupcity" :key="key" class="letter_classify_li">
+            <h4 class="city_title">
+              {{key}}
+              <span v-if="index==0">（按字母顺序）</span>
+            </h4>
+            <ul class="groupcity_name_container cityulistul clear">
+              <router-link tag="li" v-for="item in value" :to="'/city/'+item.id" :key="item.id" class="ellipsis">
+                {{item.name}}
+              </router-link>
+            </ul>
+          </li>
+        </ul>
+      </section>
     </div>
 </template>
 
 <script>
-import headTop from '../../components/header'
+import headTop from '../../components/header/headTop'
 import {cityGuess, hotcity, groupcity} from '../../service/getData'
 
 export default {
