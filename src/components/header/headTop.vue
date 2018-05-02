@@ -1,6 +1,6 @@
 <!--Created by jiangjianming@bmkp.cn on 2018/4/27.-->
 <template>
-    <header id="head-top">
+    <header id="headtop">
       <slot name="logo"></slot>
       <slot name="search"></slot>
       <section class="head_goback" v-if="goBack" @click="$router.go(-1)">
@@ -37,7 +37,7 @@ export default {
     // 获取用户信息
     this.getUserInfo()
   },
-  props: ['singinUp', 'headTitle', 'goBack'],
+  props: ['signinUp', 'headTitle', 'goBack'],
   computed: {
     ...mapState([
       'userInfo'

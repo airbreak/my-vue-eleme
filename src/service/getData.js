@@ -27,3 +27,13 @@ export const groupcity = () => fetch('v1/cities', {
 * 获取当前所在城市
 * */
 export const currentcity = number => fetch('/v1/cities' + number)
+
+/*
+* 获取用户信息
+* */
+export const getUser = () => fetch('v1/user', {user_id: window.getStore('user_id')})
+
+/*
+* 个人中心里搜索地址
+* */
+export const getAddressList = (userId) => fetch('v1/users/' + userId + '/address')
