@@ -130,15 +130,16 @@ export default {
   margin-bottom: 0.4rem
 
 .citylistul
+  display: flex
+  flex-wrap: wrap
   li
-    float: left
     text-align: center
     color: $blue
     border-bottom: 0.025rem solid $bc
     border-right: 0.025rem solid $bc
     +wh(25%, 1.75rem)
     +font(0.6rem, 1.75rem)
-  li:nth-of-type(4n)
+    &:nth-of-type(4n)
     border-right: none
 .city_title
   color: #666
