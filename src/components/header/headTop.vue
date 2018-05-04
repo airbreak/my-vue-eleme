@@ -55,7 +55,7 @@ export default {
   @import "../../style/mixin"
   #head_top
     display: flex
-    align-content: center
+    align-items: center
     background-color: $blue
     position: fixed
     z-index: 100
@@ -63,10 +63,8 @@ export default {
     top: 0
     +wh(100%,.45rem)
     .head_goback
-      left: 0.4rem
-      +wh(0.6rem, 1rem)
-      line-height: 2.2rem
-      margin-left: .4rem
+      +wh(0.6rem, .25rem)
+      margin-left: .15rem
     .head_login
       right: 0.25rem
       +sc(0.14rem, #fff)
@@ -82,7 +80,7 @@ export default {
       color: #fff
       text-align: center
       .title_text
-        +sc(0.8rem, #fff)
+        +sc(0.14rem, #fff)
         text-align: center
         font-weight: bold
 </style>

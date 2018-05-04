@@ -27,7 +27,16 @@ export const groupcity = () => fetch('v1/cities', {
 /*
 * 获取当前所在城市
 * */
-export const currentcity = number => fetch('/v1/cities' + number)
+export const currentcity = number => fetch('/v1/cities/' + number)
+
+/*
+* 获取搜索地址
+* */
+export const searchplace = (cityId, value) => fetch('/v1/pois', {
+  type: 'search',
+  city_id: cityId,
+  keyword: value
+})
 
 /*
 * 获取用户信息
