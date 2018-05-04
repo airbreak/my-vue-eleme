@@ -32,10 +32,8 @@ import {
   ADD_ADDRESS,
   BUY_CART
 } from './mutation-types'
-
-import { setStore, getStore} from '../config/mUtils'
-
-import { localapi,proapi } from 'scr/config/env'
+import {setStore, getStore} from '../config/mUtils'
+import {localapi, proapi} from '../config/env'
 
 export default {
   // 记录当前经度纬度
@@ -134,7 +132,7 @@ export default {
     if (!state.login) {
       return
     }
-    if (!state.message) {
+    if (!state.message && info.status !== 0) {
       state.userInfo = {...info}
     } else {
       state.userInfo = null
@@ -188,6 +186,10 @@ export default {
   [SAVE_CART_ID_SIG] (state, orderParam) {
     state.orderParam = orderParam
   },
+  // 保存下单参数，用户验证页面调用
+  [SAVE_ORDER_PARAM](state, orderParam) {
+    state.orderParam = orderParam;
+  },
   // 修改下单参数
   [CHANGE_ORDER_PARAM] (state, newParam) {
     state.orderParam = Object.assign({}, state.orderParam, newParam)
@@ -200,5 +202,33 @@ export default {
   // 进入订单详情页前保存该订单信息
   [SAVE_ORDER] (state, orderDetail) {
     state.orderDetail = orderDetail
+  },
+  // 退出登录
+  [OUT_LOGIN] (state, orderDetail) {
+    state.userInfo = {}
+    state.login = false
+  },
+
+  [SAVE_AVANDER] (state, imgPath) {
+    state.imgPath = imgPath
+  },
+  // 删除地址
+  [SAVE_ADDRESS] (state, newAddress) {
+    state.removeAddress = newAddress
+  },
+  [SAVE_ADDDETAIL] (state,addAddress) {
+    state.addAddress = addAddress
+  },
+  // 保存所选问题标题和详情
+  [SAVE_QUESTION] (state, question) {
+    state.question = {...question}
+  },
+  // 添加地址
+  [ADD_ADDRESS] (state, obj) {
+    state.removeAddress = [obj, ...state.removeAddress]
+  },
+  // 会员卡价格纪录
+  [BUY_CART] (state, price) {
+    state.cartPrice = price
   }
 }

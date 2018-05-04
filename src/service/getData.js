@@ -2,6 +2,7 @@
  * Created by jiangjianming@bmkp.cn on 2018/4/27.
  */
 import fetch from '../config/fetch'
+import {getStore} from '../config/mUtils'
 /*
 * 获取首页默认地址
 * */
@@ -31,7 +32,7 @@ export const currentcity = number => fetch('/v1/cities' + number)
 /*
 * 获取用户信息
 * */
-export const getUser = () => fetch('v1/user', {user_id: window.getStore('user_id')})
+export const getUser = () => fetch('v1/user', {user_id: getStore('user_id')})
 
 /*
 * 个人中心里搜索地址

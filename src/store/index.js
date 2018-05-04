@@ -5,7 +5,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './action'
-import gettter from './getter'
+import getter from './getter'
 
 Vue.use(Vuex)
 
@@ -38,7 +38,7 @@ const state = {
   cartPrice: null // 会员卡价格
 }
 
-export default new Vuex.Store ({
+export default new Vuex.Store({
   state,
   getter,
   actions,

@@ -38,7 +38,7 @@ $fc: #fff
 @mixin ct
   position: absolute
   top: 50%
-    transform: translateY(-50%)
+  transform: translateY(-50%)
 
 
 //定位上下居中
@@ -70,3 +70,9 @@ $fc: #fff
   display: flex
   justify-content: $type
 
+@mixin txt-ellipsis-p($num:1)
+  text-overflow: ellipsis
+  overflow: hidden
+  display: -webkit-box
+  -webkit-box-orient: vertical
+  -webkit-line-clamp: $num

@@ -1,6 +1,6 @@
 <!--Created by jiangjianming@bmkp.cn on 2018/4/27.-->
 <template>
-    <header id="headtop">
+    <header id="head_top">
       <slot name="logo"></slot>
       <slot name="search"></slot>
       <section class="head_goback" v-if="goBack" @click="$router.go(-1)">
@@ -54,33 +54,35 @@ export default {
 <style lang="sass" scoped>
   @import "../../style/mixin"
   #head_top
+    display: flex
+    align-content: center
     background-color: $blue
     position: fixed
     z-index: 100
     left: 0
     top: 0
-    @include wh(100%, 1.95rem)
+    +wh(100%,.45rem)
     .head_goback
       left: 0.4rem
-      @include wh(0.6rem, 1rem)
+      +wh(0.6rem, 1rem)
       line-height: 2.2rem
       margin-left: .4rem
     .head_login
-      right: 0.55rem
-      @include sc(0.65rem, #fff)
-      @include ct
+      right: 0.25rem
+      +sc(0.14rem, #fff)
+      +ct
       .login_span
         color: #fff
       .user_avatar
         fill: #fff
-        @include wh(.8rem, .8rem)
+        +wh(.8rem, .8rem)
     .title_head
-      @include center
+      +center
       width: 50%
       color: #fff
       text-align: center
       .title_text
-        @include sc(0.8rem, #fff)
+        +sc(0.8rem, #fff)
         text-align: center
         font-weight: bold
 </style>

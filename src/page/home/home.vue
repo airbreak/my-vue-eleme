@@ -1,30 +1,30 @@
 <!--Created by jiangjianming@bmkp.cn on 2018/4/27.-->
 <template>
     <div class="wrapper-box">
-      <head-top signin-up="home">
-        <span slot="logo" class="head_logo" @click="reload">ele.me</span>
-      </head-top>
-      <nav class="city_nav">
-        <div class="city_tip">
-          <span>当前定位城市:</span>
-          <span>定位不准时，请在城市列表中选择</span>
-        </div>
-        <router-link :to="'/city/' + guessCityid " class="guess_city">
-          <span>{{guessCity}}</span>
-          <svg class="arrow_right">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
-          </svg>
-        </router-link>
-      </nav>
-      <section id="hot_city_container">
-        <h4 class="city_title">热门城市</h4>
-        <ul class="citylistul clear">
-          <router-link tag="li" v-for="item in hotCityArr" :to="'/city/'+item.id" :key="item.id">
-            {{item.name}}
+        <head-top signin-up="home">
+          <span slot="logo" class="head_logo" @click="reload">ele.me</span>
+        </head-top>
+        <nav class="city_nav">
+          <div class="city_tip">
+            <span>当前定位城市:</span>
+            <span>定位不准时，请在城市列表中选择</span>
+          </div>
+          <router-link :to="'/city/' + guessCityid " class="guess_city">
+            <span>{{guessCity}}</span>
+            <svg class="arrow_right">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
+            </svg>
           </router-link>
-        </ul>
-      </section>
-      <section class="group_city_container">
+        </nav>
+        <section id="hot_city_container">
+          <div class="city_title">热门城市</div>
+          <ul class="citylistul clear">
+            <router-link tag="li" v-for="item in hotCityArr" :to="'/city/'+item.id" :key="item.id">
+              {{item.name}}
+            </router-link>
+          </ul>
+        </section>
+        <section class="group_city_container">
         <ul class="letter_classify">
           <li v-for="(value, key, index) in sortgroupcity" :key="key" class="letter_classify_li">
             <h4 class="city_title">
@@ -32,7 +32,7 @@
               <span v-if="index==0">（按字母顺序）</span>
             </h4>
             <ul class="groupcity_name_container cityulistul clear">
-              <router-link tag="li" v-for="item in value" :to="'/city/'+item.id" :key="item.id" class="ellipsis">
+              <router-link tag="li" v-for="item in value" :to="'/city/'+item.id" :key="item.id">
                 {{item.name}}
               </router-link>
             </ul>
@@ -92,70 +92,85 @@ export default {
 
 <style lang="sass" scoped>
 @import "../../style/mixin.sass"
+=city-item
+    text-align: center
+    color: #333
+    +wh(27.5%, .35rem)
+    line-height: 0.35rem
+    font-size: .14rem
+    margin: .1rem
+    border-right: none
+    background-color: #fff
+    border-radius: .02rem
+.wrapper-box
+  background-color: #EBEBEB
+  padding: .45rem 0
 .head_logo
-  left: 0.4rem
   font-weight: 400
-  +sc(0.7rem, #fff)
-  +wh(2.3rem, 0.7rem)
-  +ct
+  font-size: .14rem
+  color: #fff
+  width: 1rem
+  display: flex
+  align-items: center
+  justify-content: center
 .city_nav
-  padding-top: 2.35rem
+  padding-top: .05rem
   border-top: 1px solid $bc
-  background-color: #fff
-  margin-bottom: 0.4rem
   .city_tip
     +fj
-    line-height: 1.45rem
-    padding: 0 0.45rem
+    line-height: .145rem
+    height: .3rem
+    align-items: center
+    text-indent: .15rem
+    background-color:
     span:nth-of-type(1)
-      +sc(0.55rem, #666)
+      +sc(0.14rem, #666)
     span:nth-of-type(2)
       font-weight: 900
-      +sc(0.475rem, #9f9f9f)
+      +sc(0.14rem, #9f9f9f)
   .guess_city
     +fj
     align-items: center
-    height: 1.8rem
-    padding: 0 0.45rem
-    border-top: 1px solid $bc
-    border-bottom: 2px solid $bc
+    padding: .05rem 0
+    background-color: #F5F5F5
     +font(0.75rem, 1.8rem)
     span:nth-of-type(1)
-      color: $blue
+      +city-item
     .arrow_right
       +wh(.6rem, .6rem)
       fill: #999
-#hot_city_container
-  background-color: #fff
-  margin-bottom: 0.4rem
 
 .citylistul
   display: flex
   flex-wrap: wrap
+  background-color: #F5F5F5
   li
-    text-align: center
-    color: $blue
-    border-bottom: 0.025rem solid $bc
-    border-right: 0.025rem solid $bc
-    +wh(25%, 1.75rem)
-    +font(0.6rem, 1.75rem)
-    &:nth-of-type(4n)
-    border-right: none
+    +city-item
 .city_title
   color: #666
   font-weight: 400
-  text-indent: 0.45rem
-  border-top: 2px solid $bc
-  border-bottom: 1px solid $bc
-  +font(0.55rem, 1.45rem, "Helvetica Neue")
+  text-indent: 0.15rem
+  display: flex
+  align-items: center
+  height: .35rem
+  font-size: .15rem
+  color: #999
   span
-    +sc(0.475rem, #999)
-.letter_classify_li
-  margin-bottom: 0.4rem
-  background-color: #fff
-  border-bottom: 1px solid $bc
-  .groupcity_name_container
-    li
-      color: #666
+    +sc(0.14rem, #999)
+.groupcity_name_container
+  background-color: #F5F5F5
+  li
+    display: flex
+    color: #666
+    height: .4rem
+    justify-content: flex-start
+    align-items: center
+    box-sizing: border-box
+    font-size: .14rem
+    border-bottom: .01rem solid #C9C9C9
+    margin-left: .15rem
+    box-sizing: border-box
+    &:last-child
+      border-bottom: none
 
 </style>
