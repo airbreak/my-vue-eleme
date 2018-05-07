@@ -39,6 +39,19 @@ export const searchplace = (cityId, value) => fetch('/v1/pois', {
 })
 
 /*
+* 获取msitem页面地址信息
+* */
+export const msitemAddress = geohash => fetch('/v2/pois/' + geohash)
+
+/*
+* 获取msite 页面食品分类列表
+* */
+export const msiteFoodTypes = geohash => fetch('/v2/index_entry', {
+  geohash,
+  group_type: '1',
+  'flags[]': 'F'
+})
+/*
 * 获取用户信息
 * */
 export const getUser = () => fetch('v1/user', {user_id: getStore('user_id')})

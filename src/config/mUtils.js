@@ -272,3 +272,20 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
     })
   }, 20)
 }
+
+/**
+ * 当调用动作触发一段时间后，才会执行该动作，若在这段时间间隔内又调用此动作则将重新计算时间间隔
+ * @param {*} action
+ * @param {*} delay
+ */
+export const debounce = (action, delay) => {
+  var timer = null
+  return function () {
+    let self = this
+    let args = arguments
+    clearTimeout(timer)
+    timer = setTimeout(function () {
+      action.apply(self, args)
+    }, delay)
+  }
+}

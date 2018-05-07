@@ -1,0 +1,27 @@
+/**
+ * Created by jiangjianming@bmkp.cn on 2018/5/7.
+ */
+@import 'mixin.sass'
+#foot_guide
+  background-color: #fff
+  position: fixed
+  z-index: 100
+  left: 0
+  right: 0
+  bottom: 0
+  +wh(100%, .55rem)
+  display: flex
+  box-shadow: 0 -0.026667rem 0.053333rem rgba(0,0,0,.1)
+
+  .guide_item
+    flex: 1
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    .icon_style
+      +wh(.20rem, .20rem)
+      fill: #ccc
+  span
+    margin-top: .02rem
+    +sc(.14rem, #666)

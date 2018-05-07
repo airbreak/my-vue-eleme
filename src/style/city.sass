@@ -1,0 +1,62 @@
+/**
+ * Created by jiangjianming@bmkp.cn on 2018/5/7.
+ */
+@import 'mixin.sass'
+.wrapper-box
+  padding: .45rem 0
+  .change_city
+    right: 0.15rem
+    +sc(0.14rem, #fff)
+    +ct
+  .city_form
+    background-color: #fff
+    border-top: 1px solid $bc
+    border-bottom: 1px solid $bc
+    padding-top: 0.4rem
+    div
+      width: 90%
+      margin: 0 auto
+      text-align: center
+      .input_style
+        border-radius: 0.05rem
+        margin-bottom: 0.4rem
+        +wh(100%, 0.35rem)
+      .city_input
+        border: 1px solid $bc
+        padding-left: .12rem
+        +sc(0.14rem, #333)
+      .city_submit
+        background-color: $blue
+        +sc(0.65rem, #fff)
+  .pois_search_history
+    padding-left: 0.15rem
+    font-size: .16rem
+    margin: .10rem 0
+  .getpois_ul
+    background-color: #fff
+    border-top: 1px solid $bc
+    margin-top: .1rem
+    li
+      margin: 0 auto
+      border-bottom: 1px solid $bc
+      height: .55rem
+      display: flex
+      flex-direction: column
+      justify-content: center
+      padding: 0 .15rem
+      .pois_name
+        +sc(0.15rem, #333)
+      .pois_address
+        margin-top: .03rem
+        +sc(0.12rem, #999)
+    .search_none_place
+      margin: 0 auto
+      +font(0.65rem, 1.75rem)
+      color: #333
+      background-color: #fff
+      text-indent: 0.5rem
+  .clear_all_history
+    +sc(0.14rem, #666)
+    text-align: center
+    line-height: .35rem
+    background-color: #fff
