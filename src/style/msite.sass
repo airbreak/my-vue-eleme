@@ -19,17 +19,40 @@
 
 
 .msite_nav
-  padding-top: 2.1rem
+  padding-top: .45rem
   background-color: #fff
   border-bottom: 0.025rem solid $bc
-  height: 10.6rem
+  height: 2.3rem
+  position: relative
   .swiper-container
-    +wh(100%, auto)
-    padding-bottom: 0.6rem
-    .swiper-pagination
-      bottom: 0.2rem
-
-
+    +wh(100%, 100%)
+    .swiper-slide
+      height: 100%
+      width: 100%
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      .nav_menu_item
+        +wh(.90rem, .90rem)
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        img
+          +wh(.40rem, .40rem)
+        span
+          font-size: .12rem
+          margin-top: .05rem
+          color: #333
+  .swiper-pagination
+    bottom: 0.02rem
+    position: absolute
+    left: 50%
+    transform: translate(-50%,0)
+    span
+      margin-right: .1rem
+      &:last-child
+        margin-right: 0
   .fl_back
     +wh(100%, 100%)
 

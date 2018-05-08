@@ -4,6 +4,7 @@ import App from '../App'
 const home = resolve => require(['../page/home/home'], resolve)
 const city = resolve => require(['../page/city/city'], resolve)
 const msite = resolve => require(['../page/msite/msite'], resolve)
+const search = resolve => require(['../page/search/search'], resolve)
 Vue.use(Router)
 
 export default new Router({
@@ -29,7 +30,13 @@ export default new Router({
         path: '/msite',
         component: msite,
         meta: { keepAlive: true }
-      }]
+      },
+      // 搜索页
+      {
+        path: '/search/:geohash',
+        component: search
+      }
+      ]
     }
   ]
 })

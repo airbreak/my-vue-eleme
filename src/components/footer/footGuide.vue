@@ -81,12 +81,12 @@ export default {
   },
   methods: {
     gotoAddress (path) {
-      this.$route.push(path)
+      this.$router.push(path)
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-@import "../../style/footguide.sass"
+@import "../../style/common/footguide"
 </style>

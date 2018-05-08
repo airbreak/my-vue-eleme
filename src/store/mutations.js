@@ -179,7 +179,7 @@ export default {
     state.addressIndex = index
   },
   // 保存下单后需要验证的返回值
-  [NEED_VALIDATION](state, needValidation) {
+  [NEED_VALIDATION] (state, needValidation) {
     state.needValidation = needValidation
   },
   // 保存下单后购物id 和 sig
@@ -187,8 +187,8 @@ export default {
     state.orderParam = orderParam
   },
   // 保存下单参数，用户验证页面调用
-  [SAVE_ORDER_PARAM](state, orderParam) {
-    state.orderParam = orderParam;
+  [SAVE_ORDER_PARAM] (state, orderParam) {
+    state.orderParam = orderParam
   },
   // 修改下单参数
   [CHANGE_ORDER_PARAM] (state, newParam) {
