@@ -37,9 +37,9 @@ import {localapi, proapi} from '../config/env'
 
 export default {
   // 记录当前经度纬度
-  [RECORD_ADDRESS] (state, {latitude, longtitude}) {
+  [RECORD_ADDRESS] (state, {latitude, longitude}) {
     state.latitude = latitude
-    state.longtitude = longtitude
+    state.longitude = longitude
   },
   [RECORD_SHOPDETAIL] (state, detail) {
     state.shopDetail = detail

@@ -75,7 +75,6 @@ export default {
           this.placeList = res
           this.placeNone = !res.length
         })
-        console.log(123)
       }, 500)
     },
     nextpage (index, geohash) {

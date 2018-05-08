@@ -19,7 +19,7 @@
         </router-link>
       </head-top>
       <nav class="msite_nav">
-        <div v-if="foodTypes.length>0">
+        <section v-if="foodTypes.length>0">
           <swiper :options="swiperOptions">
             <swiper-slide v-for="(item, index) in foodTypes" :key="index">
               <router-link class="nav_menu_item" v-for="(menuInfo,menuIndex) in item"
@@ -31,7 +31,7 @@
             </swiper-slide>
           </swiper>
           <div class="swiper-pagination"></div>
-        </div>
+        </section>
         <img src="../../images/fl.svg" class="fl_back animation_opactiy" v-else>
       </nav>
       <div class="shop_list_container">
@@ -41,7 +41,7 @@
           </svg>
           <span class="shop_header_title">附近商家</span>
         </header>
-        <shop-list v-if="hasGetData" :geohas="geohash"></shop-list>
+        <shop-list v-if="hasGetData" :geohash="geohash"></shop-list>
       </div>
       <foot-guide></foot-guide>
     </div>
@@ -80,7 +80,7 @@ export default {
   async beforeMount () {
     if (!this.$route.query.geohash) {
       const address = await cityGuess()
-      this.geohash = address.latitude + ',' + address.longtitude
+      this.geohash = address.latitude + ',' + address.longitude
     } else {
       this.geohash = this.$route.query.geohash
     }
