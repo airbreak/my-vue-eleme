@@ -1,8 +1,7 @@
 <!--Created by jiangjianming@bmkp.cn on 2018/4/27.-->
 <template>
     <div class="showlist_container">
-      <!--<ul v-load-more="loaderMore" v-if="shopListArr.length" type="1">-->
-      <ul v-if="shopListArr.length" type="1">
+      <ul v-load-more="loaderMore" v-if="shopListArr.length" type="1">
         <router-link :to="{path:'shop',query:{geohash, id:item.id}}"
                      v-for="item in shopListArr"
                      tag="li"
@@ -72,6 +71,7 @@ import {mapState} from 'vuex'
 import {shopList} from '../../service/getData'
 import {imgBaseUrl} from '../../config/env'
 import {showBack, animate} from '../../config/mUtils'
+import {loadMore, getImgPath} from './mixin'
 import loading from './loading'
 import ratingStar from './ratingStar'
 export default {
@@ -88,6 +88,7 @@ export default {
     }
   },
   props: ['restaurantCategoryId', 'restaurantCategoryIds', 'sortByType', 'deliveryMode', 'supportIds', 'confirmSelect', 'geohash'],
+  mixins: [loadMore, getImgPath],
   mounted () {
     this.initData()
   },
@@ -114,12 +115,29 @@ export default {
       this.showLoading = false
     },
     async loaderMore () {
+      alert(10)
       if (this.touchend) {
         return
       }
       // 防止重复请求
+      if (this.preventRepeatReuqest) {
+        return
+      }
       this.showLoading = true
       this.preventRepeatReuqest = true
+
+      // 数据的定位加20
+      this.offset += 20
+      let res = await shopList(this.latitude, this.longitude, this.offset, this.restaurantCategoryId)
+      this.hideLoading()
+      this.shopListArr = [...this.shopListArr, ...res]
+
+      // 当获取数据小于20，说明没有更多的数据，不需要再次请求
+      if (res.length < 20) {
+        this.touchend = true
+        return
+      }
+      this.preventRepeatReuqest = false
     },
     zhunshi (supports) {
       let zhunshiStatus

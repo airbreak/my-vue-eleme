@@ -36,7 +36,7 @@ export default {
     .star_container
       position: absolute
       display: flex
-      width: 1rem
+      width: .7rem
       height: 0.12rem
       .grey_fill
         fill: #d1d1d1
