@@ -8,12 +8,6 @@
             <line x1="14" y1="14" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:2"/>
           </svg>
         </router-link>
-        <router-link :to="'/search/geohash'" class="link_search" slot="search">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <circle cx="8" cy="8" r="7" stroke="rgb(255,255,255)" stroke-width="1" fill="none"/>
-            <line x1="14" y1="14" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:2"/>
-          </svg>
-        </router-link>
         <router-link to="/home" slot="msite-title" class="msite_title">
           <span class="title_text ellipsis">{{msiteTitle}}</span>
         </router-link>
@@ -34,10 +28,11 @@
         </section>
         <img src="../../images/fl.svg" class="fl_back animation_opactiy" v-else>
       </nav>
-      <div class="shop_list_container">
+      <div class="shoplist_box">
         <header class="shop_header">
-          <svg class="shop_icon">
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>
+          <svg class="shop_icon" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <!--<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>-->
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use>
           </svg>
           <span class="shop_header_title">附近商家</span>
         </header>
