@@ -115,7 +115,6 @@ export default {
       this.showLoading = false
     },
     async loaderMore () {
-      alert(10)
       if (this.touchend) {
         return
       }

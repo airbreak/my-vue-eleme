@@ -12,15 +12,12 @@ export const loadMore = {
         let marginBottom
         let requestFram
         let oldScrollTop
-        let scrollEl
         let heightEl
         let scrollType = el.attributes.type && el.attributes.type.value
         let scrollReduce = 2
-        if (scrollType == 2) {
-          scrollEl = el
+        if (scrollType === 2) {
           heightEl = el.children[0]
         } else {
-          scrollEl = document.body
           heightEl = el
         }
 
@@ -39,14 +36,14 @@ export const loadMore = {
         }, false)
 
         el.addEventListener('touchend', () => {
-          oldScrollTop = scrollEl.scrollTop
+          oldScrollTop = getScrollTop()
           moveEnd()
         }, false)
 
         const moveEnd = () => {
           requestFram = requestAnimationFrame(() => {
-            if (scrollEl.scrollTop !== oldScrollTop) {
-              oldScrollTop = scrollEl.scrollTop
+            if (getScrollTop() !== oldScrollTop) {
+              oldScrollTop = getScrollTop()
               moveEnd()
             } else {
               cancelAnimationFrame(requestFram)
@@ -57,9 +54,16 @@ export const loadMore = {
         }
 
         const loadMore = () => {
-          if (scrollEl.scrollTop + windowHeight >= height + setTop + paddingBottom + marginBottom - scrollReduce) {
+          if (getScrollTop() + windowHeight >= height + setTop + paddingBottom + marginBottom - scrollReduce) {
             binding.value()
           }
+        }
+        const getScrollTop = () => {
+          let scrollTop = window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            document.body.scrollTop ||
+            0
+          return scrollTop
         }
       }
     }
