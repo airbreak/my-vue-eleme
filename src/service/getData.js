@@ -85,3 +85,38 @@ export const getUser = () => fetch('v1/user', {user_id: getStore('user_id')})
 * 个人中心里搜索地址
 * */
 export const getAddressList = (userId) => fetch('v1/users/' + userId + '/address')
+
+/*
+* 店铺详情
+* */
+export const shopDetails = (shopid, latitude, longitude) => fetch('/shopping/restaurant/' + shopid, {
+  latitude,
+  longitude: longitude + '&extras[]=activities&extras[]=album&extras[]=license&extras[]=identification&extras[]=statistics'
+})
+
+/*
+* 获取店铺页面菜单列表
+* */
+export const foodMenu = restaurantId => fetch('/shopping/v2/menu', {
+  restaurant_id: restaurantId
+})
+
+/*
+* 获取店铺评价列表
+* */
+export const getRatingList = (shopId, offset, tagName = '') => fetch('/ugc/v2/restaurants/' + shopId + '/ratings', {
+  has_content: true,
+  offset,
+  limit: 10,
+  tagName
+})
+
+/*
+* 获取店铺的评价分数
+* */
+export const ratingScores = shopId => fetch('/ugc/v2/restaurants/' + shopId + '/ratings/scores')
+
+/*
+* 获取商铺的评价分类
+* */
+export const ratingTags = shopId => fetch('/ugc/v2/restaurants/' + shopId + '/ratings/tags')
