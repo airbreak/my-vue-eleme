@@ -53,7 +53,7 @@ export default {
     price,
     specs,
     packingFee,
-    sku_id,
+    skuId,
     stock
   }) {
     let cart = state.cartList
@@ -70,7 +70,7 @@ export default {
         'price': price,
         'specs': specs,
         'packing_fee': packingFee,
-        'skuid': sku_id,
+        'skuid': skuId,
         'stock': stock
       }
     }
@@ -80,7 +80,7 @@ export default {
   },
 
   // 移除购物车
-  [REDUCE_CART](state, {
+  [REDUCE_CART] (state, {
     shopId,
     categoryId,
     itemId,
