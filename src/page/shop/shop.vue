@@ -28,7 +28,7 @@
                 <span class="tip_icon" :style="{backgroundColor:'#' + shopDetailData.activities[0].icon_color,borderColor:'#' + shopDetailData.activities[0].icon_color}">{{shopDetailData.activities[0].icon_name}}</span>
                 <span>{{shopDetailData.activities[0].description}}(APP专享)</span>
               </p>
-              <p>{{shopDetail.activities.length}}个活动</p>
+              <p>{{shopDetailData.activities.length}}个活动</p>
               <svg class="footer_arrow">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use>
               </svg>
